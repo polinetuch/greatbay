@@ -27,15 +27,37 @@ var startGB = function() {
   inquirer
     .prompt([
       {
-        name: "select-option",
+        name: "selectOption",
         type: "list",
         message: "What would you like to do?",
-        choices: ["Post", "Bid", "Exit"]
+        choices: ["POST", "BID", "EXIT"]
       }
     ])
-    .then(function(response) {
-      console.log(response);
+    .then(function(answer) {
+      console.log(answer);
+      if (answer.selectOption === "POST") {
+        postItem();
+      } else if (answer.selectOption === "bidItem") {
+        bidItem();
+      } else {
+        exitGB();
+      }
     });
 };
 
 startGB();
+
+var postItem = function() {
+  inquirer.prompt([
+    {
+      name: "POST",
+      type: "input",
+      message: "What item would you like to post?"
+    },
+    {
+      name: "category",
+      type: "input",
+      message: "Which category does it belong to?"
+    }
+  ]);
+};
