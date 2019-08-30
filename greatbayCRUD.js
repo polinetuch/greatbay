@@ -20,33 +20,22 @@ connection.connect(function(err) {
   connection.end();
 });
 
-// function to prompt users with three options
-
-// switch (command) {
-//   case "start-GB":
-//   function selectionOption() {
-//   }.then(function(response) {
-//     inquirer.prompt([
-//       {
-//         name: "option",
-//         message: "What would you like to do?",
-//         type: "list",
-//         choices: "Post", "Bid", "Exit"
-//       }
-//     ])
-//   })
-//   break,
-// }
-// selectionOption();
-
 var inquirer = require("inquirer");
-// function startDB(response) {
-   inquirer.prompt ([
-    {
-      name: "select-option",
-      type: "list",
-      message: "What would you like to do?",
-      choices: ["Post", "Bid", "Exit"]
-    }
-  ])
-// }
+
+// function to start Great Bay by choosing one of the options
+var startGB = function() {
+  inquirer
+    .prompt([
+      {
+        name: "select-option",
+        type: "list",
+        message: "What would you like to do?",
+        choices: ["Post", "Bid", "Exit"]
+      }
+    ])
+    .then(function(response) {
+      console.log(response);
+    });
+};
+
+startGB();
